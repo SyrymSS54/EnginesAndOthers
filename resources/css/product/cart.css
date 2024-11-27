@@ -1,0 +1,13 @@
+.cart-data
+{
+    list-style-type: none;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.cart-data > li{
+    margin: 5px;
+}
+

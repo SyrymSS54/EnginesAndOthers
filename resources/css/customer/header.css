@@ -1,0 +1,46 @@
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+/* Стили для контейнера поиска */
+.search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Центрируем контейнер по горизонтали */
+    margin: 10px; /* Отступы вокруг контейнера */
+}
+
+/* Стили для поля ввода */
+.search-input {
+    padding: 10px;
+    border: 2px solid #007bff; /* Синий цвет для границы */
+    border-radius: 5px;
+    font-size: 16px;
+    width: 300px; /* Ширина поля ввода */
+    transition: border-color 0.3s; /* Плавный переход цвета границы */
+}
+
+/* Изменяем цвет границы при фокусе */
+.search-input:focus {
+    border-color: #0056b3; /* Более тёмный синий при фокусе */
+    outline: none; /* Убираем стандартный обвод при фокусе */
+}
+
+/* Стили для кнопки поиска */
+.button {
+    background-color: #007bff; /* Синий цвет кнопки */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px; /* Отступы внутри кнопки */
+    margin-left: 10px; /* Отступ слева для разделения с полем ввода */
+    cursor: pointer; /* Указатель при наведении */
+    transition: background-color 0.3s; /* Плавный переход цвета фона */
+}
+
+/* Изменяем цвет кнопки при наведении */
+.button:hover {
+    background-color: #0056b3; /* Более тёмный синий при наведении */
+}

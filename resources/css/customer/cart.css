@@ -1,0 +1,49 @@
+.content{
+    display: flex;
+    flex-direction: column;
+}
+
+.content > .cart-container{
+    margin: 15px 0;
+}
+
+.content > .cart-container > .seller-title{
+    font-weight: bold;
+}
+
+.content > .cart-container > .carts-list{
+    display: flex;
+    flex-direction: column;
+
+    list-style-type: none;
+    margin: 10px 0;
+}
+
+.content > .cart-container > .carts-list > .cart{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    margin: 5px 0;
+}
+
+.content > .cart-container > .carts-list > .cart > .name{
+    margin-right: 30px;
+}
+
+.content > .cart-container > .carts-list > .cart > .count{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.content > .cart-container > .carts-list > .cart > .count > .button{
+    padding: 5px 10px;
+    margin: 0 10px;
+}
+
+.content > .cart-container > .carts-list > .cart > .count > .delete{
+    margin: 0 20px;
+
+    padding: 5px 10px;
+}
