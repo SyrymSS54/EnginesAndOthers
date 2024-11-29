@@ -1,0 +1,61 @@
+.store-container{
+    padding: 20px;
+}
+
+.create-store{
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+}
+
+.create-store > div{
+    width: 250px;
+    margin: 15px 0;
+
+    height: 25px;
+    padding: 3px;
+}
+
+.create-store > .radio{
+}
+.create-store > .radio > input{
+    margin: 10px 15px;
+}
+
+.create-store > .submit{
+    width: 150px;
+    height: 30px;
+    margin: 20px 0;
+}
+
+.create-store > .count>input{
+    width:  100px;
+    padding: 5px;
+    margin: 5px 0;
+}
+
+.list-container > button{
+    padding: 5px 10px;
+    margin: 10px 0;
+}
+
+.item-container > button{
+    padding: 5px 10px;
+    margin: 10px 0;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  } 

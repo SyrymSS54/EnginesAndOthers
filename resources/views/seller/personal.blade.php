@@ -7,7 +7,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>{{ $seller['company_name'] }}</title>
         @viteReactRefresh 
-        @Vite(['resources/css/seller/personal.css','resources/js/seller/personal.jsx'])
+        @Vite(['resources/css/seller/personal.css','resources/js/seller/personal.jsx','resources/css/seller/store.css'])
     </head>
     <body>
         <div class="container">

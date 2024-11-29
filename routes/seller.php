@@ -6,6 +6,7 @@ use App\Http\Controllers\Seller\SellerController;
 use App\Models\Product\ProductModel;
 use App\Http\Controllers\Product\ProductCRUD;
 use App\Http\Controllers\Product\ProductController;
+use App\Http\Controllers\Seller\StoreController;
 
 Route::controller(AuthController::class)->group(function(){
     Route::get('/seller/auth/signin','index_signin')->name('seller.auth.get.signin');
@@ -24,4 +25,11 @@ Route::controller(ProductCRUD::class)->group(function(){
     Route::post('/seller/product/read','read')->can('seller','productModel');
     Route::post('/seller/product/update','update')->can('update','productModel');
     Route::post('/seller/product/')->can('update','productModel');
+});
+
+Route::controller(StoreController::class)->group(function(){
+    Route::post('/seller/store','get_list_store')->name('seller.store')->middleware('checkSeller');
+    Route::post('/seller/store/create','create_store')->name('seller.store.create')->middleware('checkSeller');
+    Route::post('/seller/store/item','get_item_store')->name('seller.store.item')->middleware('checkSeller');
+    Route::post('/seller/store/product/list','get_list_product')->name('seller.store.product')->middleware('checkSeller');
 });
