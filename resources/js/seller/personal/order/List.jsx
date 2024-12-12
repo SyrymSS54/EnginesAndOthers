@@ -16,18 +16,22 @@ export default function List({orders,consideration,execution,cancellation})
                     <ul className="order-products">
                         {
                             order.products.map((product,index)=>
-                            <li key={index} className="product">
-                                <label>Товар: </label>{product.description.name}
-                                <label>Количество: </label>{product.count}
-                            </li>
+                                <div className="product-item" key={index}>
+                                <img src={"/images/" + product.description.description.preview} onClick={()=>goProduct(product.description.id)}></img>
+                                <ul>
+                                    <li>{product.description.name}</li>
+                                    <li>{product.description.description.text}</li>
+                                    <li><label>Количество</label> {product.count}</li>
+                                </ul>
+                        </div>
                             )
                         }
                     </ul>
                     {
-                        order.state == 1 ? <button onClick={()=>consideration(order.id)}>Сформировать</button> : order.state == 2 ? <button onClick={()=>execution(order.id)}>Доставлен</button> : ''
+                        order.state == 1 ? <button onClick={()=>consideration(order.id)} className="order-action">Сформировать</button> : order.state == 2 ? <button className="order-action" onClick={()=>execution(order.id)}>Доставлен</button> : ''
                     }
                     {
-                        order.state !== 4 ? <button onClick={()=>cancellation(order.id)}>Отменить</button> : ''
+                        order.state !== 4 ? <button onClick={()=>cancellation(order.id)} className="order-action-cancel">Отменить</button> : ''
                     }
                     
                 </li>

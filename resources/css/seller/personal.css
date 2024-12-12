@@ -137,3 +137,74 @@ body{
     color: #333;
     margin-bottom: 5px;
 }
+
+.app-container{
+
+}
+
+.app-container > h3{
+    margin-bottom: 10px ;
+}
+
+.order-list{
+    list-style-type: none;
+}
+
+.order-list > h4{
+    margin-bottom: 5px;
+}
+
+
+.order-products > .product-item{
+    display: flex;
+    flex-direction: row;
+}
+
+.product-item > img{
+    width: 120px;
+    border-radius: 10px;
+}
+
+.product-item > ul{
+    margin: 0 10px;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-height: 80px;
+
+}
+
+.product-item > ul > li >label{
+    font-weight: 650;
+}
+
+.order-list > button{
+    margin: 10px 0;
+    margin-right: 10px;
+    padding: 5px 15px;
+}
+
+.order-list > .order-action-cancel{
+    border-radius: 10px;
+    padding: 8px 15px;
+    border: 0;
+    color: white;
+    background-color: rgb(212, 18, 18);
+}
+
+.order-list > .order-action-cancel:hover{
+    background-color: rgb(207, 57, 57);
+}
+
+.order-list > .order-action{
+    border-radius: 10px;
+    padding: 8px 15px;
+    border: 0;
+    color: white;
+    background-color:#0056b3;
+}
+
+.order-list > .order-action:hover{
+    background-color: #1760ae;
+}

@@ -23,10 +23,12 @@ body {
     list-style: none;
     padding: 0;
     margin: 0 0 20px;
+    flex-grow: 1fr 1fr 1fr;
 }
 
 .img {
     margin-right: 10px;
+    width: 255px;
 }
 
 .img img {
