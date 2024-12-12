@@ -73,7 +73,7 @@ class CartController extends Controller
 
         //     return response()->json($result);
         // }
-        $result = $cartModel::where('user_id',Auth::id())->get();
+        $result = $cartModel::where('user_id',Auth::id())->with('product')->get(['count','product_id','id','product_name','seller_name','product','seller_id']);
 
         return response()->json($result);
         // return response($result);

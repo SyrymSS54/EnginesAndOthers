@@ -7,6 +7,7 @@ use App\Models\Product\ProductModel;
 use App\Http\Controllers\Product\ProductCRUD;
 use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\Seller\StoreController;
+use App\Http\Controllers\Seller\OrderStateController;
 
 Route::controller(AuthController::class)->group(function(){
     Route::get('/seller/auth/signin','index_signin')->name('seller.auth.get.signin');
@@ -33,3 +34,12 @@ Route::controller(StoreController::class)->group(function(){
     Route::post('/seller/store/item','get_item_store')->name('seller.store.item')->middleware('checkSeller');
     Route::post('/seller/store/product/list','get_list_product')->name('seller.store.product')->middleware('checkSeller');
 });
+
+Route::controller(OrderStateController::class)->group(function(){
+    Route::post('/seller/order','get_orders')->middleware('checkSeller')->name('seller.order');
+    
+    Route::post('/seller/order/consideration','order_for_consideration')->middleware('checkSeller');
+    Route::post('/seller/order/execution','order_for_execution')->middleware('checkSeller');
+    Route::post('/seller/order/cancellation','order_on_cancellation')->middleware('checkSeller');
+});
+

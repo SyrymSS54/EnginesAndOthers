@@ -2,6 +2,7 @@ import { useState } from "react";
 import { createRoot } from "react-dom/client";
 import Create from "./personal/create";
 import Store from "./personal/store";
+import Order from "./personal/order";
 
 
 function Navbar({state,setState})
@@ -18,11 +19,16 @@ function Navbar({state,setState})
         state !== 'store' ? setState('store'):null;
     }
 
+    const orderChange = () => {
+        state !== 'order' ? setState('order'):null;
+    }
+
     return(
         <ul className="navbar">
             <li onClick={createChange} className={state == 'create' ? 'active':'default'}>Создать</li>
             <li onClick={updateChange} className={state == 'update' ? 'active':'default'}>Изменить</li>
             <li onClick={storeChange} className={state == 'store' ? 'active':'default'}>Склад</li>
+            <li onClick={orderChange} className={state == 'order' ? 'active':'default'}>Заказы</li>
         </ul> 
     )
 }
@@ -36,7 +42,8 @@ function Content()
             <Navbar state={contentState} setState={setContent}/>
             {contentState == 'create' ? <Create/>:
              contentState == 'update' ? contentState : 
-             contentState == 'store' ? <Store/>: contentState}
+             contentState == 'store' ? <Store/>: 
+             contentState == 'order' ? <Order/>:contentState}
         </div>
     )
 }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Customer\Auth\AuthController;
 use App\Http\Controllers\Customer\CartController;
 use App\Http\Controllers\Customer\CustomerController;
+use App\Http\Controllers\Customer\OrderController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Customer\CartModel;
 
@@ -30,4 +31,12 @@ Route::controller(CartController::class)->group(function(){
 
     Route::post('/cart/up','upSet')->middleware('checkCustomer')->name('cart.up');
     Route::post('/cart/down','downSet')->middleware('checkCustomer')->name('cart.down');
+});
+
+Route::controller(OrderController::class)->group(function(){
+    Route::post('/order','read')->middleware('checkCustomer')->name('order.read');
+    Route::post('/order/create','create')->middleware('checkCustomer')->name('order.create');
+    Route::post('/order/update','update')->middleware('checkCustomer')->name('order.update');
+    Route::post("/order/pay",'pay')->middleware('checkCustomer')->name('order.pay');
+    Route::post("/order/history",'history')->middleware('checkCustomer');
 });

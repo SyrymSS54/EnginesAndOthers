@@ -1,0 +1,77 @@
+.order_item > .product-list{
+    list-style-type: none;
+}
+
+.order_item > .product-list{
+    margin: 10px 0;
+}
+
+.order_item >  .action > button{
+    display: block;
+    text-align: center;
+    padding: 10px;
+    background-color: #0056b3;
+    text-decoration: none;
+    border: 0;
+    border-radius: 4px;
+    color: white;
+    margin: 15px 0;
+    font-weight: 500;
+}
+
+.order_item{
+    margin-bottom: 25px;
+}
+
+.order_item > .action > button:hover{
+    background-color: #1760ae;
+}
+
+.product-list > .product-item{
+    /* display: flex;
+    flex-direction: row;
+    justify-content: space-between; */
+    display: flex;
+    flex-direction: row;
+
+}
+
+.product-list{
+    margin-bottom: 15px;
+}
+
+.product-item > img{
+    width: 120px;
+    border-radius: 10px;
+}
+
+.product-item > ul{
+    margin: 0 10px;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-height: 80px;
+
+}
+
+.product-item > ul > li >label{
+    font-weight: 650;
+}
+
+.pay-button{
+    background-color: rgb(21, 248, 74);
+    color:white;
+    font-size: 21px;
+    font-weight: 800;
+    padding: 15px 10px;
+    border: 0;
+}
+
+.histoty-list{
+
+}
+
+.history-list > h3{
+    margin: 5px 0   ;
+}

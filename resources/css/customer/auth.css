@@ -15,10 +15,14 @@ body {
     /* display: grid;
     grid-template-rows: 400px auto; */
 
+    
+}
+
+.flex-container{
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    padding: 30px;
+    padding: 30px; 
 }
 
 .auth-container {

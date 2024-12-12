@@ -44,7 +44,7 @@ export default function Item({parentState,setparentState,productid,setProductId}
     return(
         <div className="item-container">
             <h3>{productData.name}</h3>
-            <button onClick={()=>{setparentState('craete')}}>Создать</button>
+            <button onClick={()=>{setparentState('create')}}>Создать</button>
             <table>
                 <thead>
                     <tr>

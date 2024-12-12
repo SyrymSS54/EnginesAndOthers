@@ -71,7 +71,7 @@ export default function Cart(){
 
     let body = JSON.stringify({product_id: value})
 
-    const data = await  fetch("/seller/store/create", {
+    const data = await  fetch("/cart/up", {
       method: "POST",
       headers: {
         "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').content,

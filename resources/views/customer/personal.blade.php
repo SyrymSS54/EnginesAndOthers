@@ -22,9 +22,11 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ $customer['first_name'].' '.$customer['last_name'] }}</title>
     @viteReactRefresh
-    @Vite(['resources/css/customer/auth.css','resources/css/customer/cart.css','resources/js/customer/personal.jsx'])
+    @Vite(['resources/css/customer/auth.css','resources/css/customer/cart.css','resources/js/customer/personal.jsx','resources/css/customer/order.css'])
 </head>
 <body>
+    <x-customer.header/>
+    <div class="flex-container">
     <div class="auth-container">
         <h2>Личный кабинет</h2>
         
@@ -46,6 +48,7 @@
             </form>
         </div>
     </div>
-    <div class="app" id="app"></div>
+    
+    <div class="app" id="app"></div></div>
 </body>
 </html>

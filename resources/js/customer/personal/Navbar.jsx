@@ -5,6 +5,7 @@ export default function Navbar({content,setContent})
     return(
         <ul className="navbar">
             <li className={content == 'cart' ? 'active' : ''} onClick={()=>{content == 'cart' ? '' : setContent('cart')}}>Корзина</li>
+            <li className={content == 'order' ? 'active' : ''} onClick={()=>{content == 'order' ? '': setContent('order')}}>Заказы</li>
             <li className={content == 'history' ? 'active' : ''} onClick={()=>{content == 'history' ? '' : setContent('history')}}>История</li>
         </ul>
     )
