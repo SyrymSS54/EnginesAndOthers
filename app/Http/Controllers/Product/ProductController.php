@@ -72,6 +72,12 @@ class ProductController extends Controller
         if($request->has('query'))
         {
             $query = $request->input('query');
+
+            if($query == '')
+            {
+                return response()->json(['Status'=>false]);
+            }
+
             $query = '%'.$query.'%';
 
             $search_name = $productModel::where('name','like',$query)->get();

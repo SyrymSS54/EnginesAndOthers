@@ -57,6 +57,7 @@ body{
     font-size: 16px;
     font-weight: 500;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: auto;
 }
 
 .product-list > .product > button:hover{

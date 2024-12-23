@@ -208,3 +208,7 @@ body{
 .order-list > .order-action:hover{
     background-color: #1760ae;
 }
+
+.order-container > .order-list{
+    margin-bottom: 15px;
+}

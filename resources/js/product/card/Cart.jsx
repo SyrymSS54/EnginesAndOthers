@@ -2,7 +2,29 @@ import { useEffect, useState } from "react";
 
 export default function Cart(){
   const [cart,setCart] = useState([])
+  const [auth,setAuth] =useState(false)
 
+  const AuthCheck = async() => {
+    const data = await  fetch("/check/customer", {
+      method: "GET",
+      headers: {
+        "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').content,
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    })
+    .then(response => {
+      return response.json();
+    })
+    .then(data => {
+      return data; // Работа с ответом сервера
+    })
+    .catch(error => {
+      console.error('Error:', error); // Обработка ошибок
+    })
+
+    setAuth(data['check']);
+  }
 
   const createCart = async() => {
     let params = new URLSearchParams(document.location.search);
@@ -14,6 +36,7 @@ export default function Cart(){
 
     console.log(body)
 
+    if(auth){
     const data = await  fetch("/customer/cart/create", {
       method: "POST",
       headers: {
@@ -31,7 +54,10 @@ export default function Cart(){
     })
     .catch(error => {
       console.error('Error:', error); // Обработка ошибок
-    })
+    })}
+    else{
+      document.location = '/customer/auth/signin';
+    }
   }
 
   const checkCart = async() => {
@@ -60,6 +86,7 @@ export default function Cart(){
       console.error('Error:', error); // Обработка ошибок
     })
 
+    AuthCheck()
     setCart(data)
   }
 

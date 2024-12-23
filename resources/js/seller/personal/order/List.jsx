@@ -31,7 +31,7 @@ export default function List({orders,consideration,execution,cancellation})
                         order.state == 1 ? <button onClick={()=>consideration(order.id)} className="order-action">Сформировать</button> : order.state == 2 ? <button className="order-action" onClick={()=>execution(order.id)}>Доставлен</button> : ''
                     }
                     {
-                        order.state !== 4 ? <button onClick={()=>cancellation(order.id)} className="order-action-cancel">Отменить</button> : ''
+                        order.state !== 4 && order.state !== 3 ? <button onClick={()=>cancellation(order.id)} className="order-action-cancel">Отменить</button> : ''
                     }
                     
                 </li>

@@ -12,9 +12,17 @@ use App\Models\Product\ProductModel;
 
 class StoreController extends Controller
 {
-    public function get_list_store(Store $store,Request $request)
+    public function get_list_store(Store $store,Request $request,ProductModel $productModel)
     {
-        return response()->json();
+        $stores = Store::where('seller_id',Auth::id())->get();
+
+        foreach($stores as $key => $store)
+        {
+            $store['name'] = ProductModel::where("_id",$store['product'])->first(['name'])['name'];
+            $stores[$key] = $store;
+        }
+
+        return response()->json($stores);
     }
 
     public function create_store(Store $store,CreateStore $request)

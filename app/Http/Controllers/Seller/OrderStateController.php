@@ -9,6 +9,8 @@ use App\Models\Customer\OrderModel;
 use App\Models\Seller\Store;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Seller\Statistics;
+
 
 
 class OrderStateController extends Controller
@@ -20,7 +22,7 @@ class OrderStateController extends Controller
         return response()->json($result);
     }
     
-    public function order_for_consideration(OrderModel $orderModel,CartModel $cartModel,Request $request)
+    public function order_for_consideration(OrderModel $orderModel,CartModel $cartModel,Request $request,Statistics $statistics)
     {
         $validator = Validator::make($request->all(),[
             "id" => "required|string"
@@ -40,6 +42,10 @@ class OrderStateController extends Controller
         }
 
         // dd($products->getAttributes()['products']);
+
+        //проверка на количество
+
+        // dd($products);
         foreach($products->getAttributes()['products'] as $product)
         {
             // dd($product);
@@ -48,6 +54,8 @@ class OrderStateController extends Controller
             // dd([$id,$count]);
 
             $store = Store::where('product',$id)->first(['count']); // количество продукта
+
+            // dd($store);
 
             if(is_null($store))
             {
@@ -61,13 +69,46 @@ class OrderStateController extends Controller
             // dd(vars: $count,$store,$result);
             if($count <= $result)
             {
-                $records = Store::where('product',$id)->first(['records'])['records'];
-                $records[] = [["id"=>uniqid(),'time'=>date('Y-m-d'),"count"=>(int)$count,'oper'=>'Расход']];
-                Store::where('product',$id)->update(['count' => $result-$count,'records'=>$records]);
             }
             else{
                 return response()->json(['status'=>false]);
             }
+        }
+
+        //запись в бд
+        // $products = $orderModel::where('seller_id',Auth::id())->where('_id',$validated['id'])->first(['products']);
+        // dd($products);
+        foreach($products->getAttributes()['products'] as $product)
+        {
+            // dd($product);
+            $id = $product['description']['id'];
+            $count = $product['count']; //количество предметов
+            // dd([$id,$count]);
+
+            $store = Store::where('product',$id)->first(['count']); // количество продукта
+
+            // dd($store);
+
+            if(is_null($store))
+            {
+                return response()->json(['status'=>false]);
+            }
+            else
+            {
+                $result = $store['count'];
+            }
+
+            
+                $records = Store::where('product',$id)->first(['records'])['records'];
+                $records[] = ["id"=>uniqid(),'time'=>date('Y-m-d'),"count"=>(int)$count,'oper'=>'Расход'];
+                Store::where('product',$id)->update(['count' => $result-$count,'records'=>$records]);
+                
+                $statistics = new Statistics;
+                $statistics->seller_id = Auth::id();
+                $statistics->product = $id;
+                $statistics->count = $count;
+                $statistics->save();
+            
         }
 
         $orderModel::where('seller_id',Auth::id())->where('_id',$validated['id'])->where('state',1)->update(['state'=>2]);

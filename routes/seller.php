@@ -3,11 +3,17 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Seller\Auth\AuthController;
 use App\Http\Controllers\Seller\SellerController;
-use App\Models\Product\ProductModel;
 use App\Http\Controllers\Product\ProductCRUD;
 use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\Seller\StoreController;
 use App\Http\Controllers\Seller\OrderStateController;
+
+use Illuminate\Http\Request;
+use App\Models\Seller\Statistics;
+use App\Models\Product\ProductModel;
+use Illuminate\Support\Facades\Auth;
+
+
 
 Route::controller(AuthController::class)->group(function(){
     Route::get('/seller/auth/signin','index_signin')->name('seller.auth.get.signin');
@@ -42,4 +48,16 @@ Route::controller(OrderStateController::class)->group(function(){
     Route::post('/seller/order/execution','order_for_execution')->middleware('checkSeller');
     Route::post('/seller/order/cancellation','order_on_cancellation')->middleware('checkSeller');
 });
+
+Route::post('/statistics',function(Request $request,Statistics $statistics,ProductModel $productModel){
+    $stores = $statistics::where('seller_id',Auth::id())->get();
+    foreach($stores as $key => $store)
+        {
+            $store['name'] = ProductModel::where("_id",$store['product'])->first(['name'])['name'];
+            $stores[$key] = $store;
+        }
+
+    return response()->json($stores);
+
+})->middleware('checkSeller');
 
